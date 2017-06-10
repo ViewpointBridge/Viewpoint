@@ -1,39 +1,103 @@
-
-
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset='utf-8' />
-    <title>Points on a map</title>
+    <title>Viewport Bridge Sensor</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'> 
-	  </script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
     <style>
-      body {
-        margin: 0;
-        padding: 0;
-      }
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Oswald" />
+  <!-- <link href="/normalize.css" rel="stylesheet"> !-->
+  <style>
+    header {
+      font-family: Oswald;
+	text-align: center;
+      background-size: cover;
+      color: white;
+    }
+	  body { margin:0; padding:0; }
+	a {
+      font-size: 24px;
+		color: blue;
+    }
+	.internal {
+      color: white;
+    }
 
-      #map {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 100%;
+    h1 {
+        font-family: Oswald;
+		font-size: 70px;
+    }
+  	h2 {
+        font-family: Oswald;
+		font-size: 36px;
       }
+    img {
+      margin: 10px 0px 0px 0px;
+      border: 7px solid white;
+      border-radius: 10px;
+    }
+  	p{
+	  font-family: Oswald;
+	  font-size: 24px;
+	  }
+	  
+    ul {
+      padding: 10px;
+      background: black;
+    }
+    li {
+      display: inline;
+      padding: 0px 10px 0px 10px;
+    }
+    article{
+      max-width: 500px;
+      padding: 5px;
+      margin: 0 auto;
+    }
+    @media (max-width: 500px) {
+      h1 {
+        font-size: 48px;
+      }
+      li {
+	  	display: block;
+        padding: 2px;
+      }
+	  
+	}
+        
+	#map { position:absolute; top:100; bottom:0; width:100%; }
     </style>
-  </head>
-  <body>
-    <div id='map'></div>
-    <script>
-    mapboxgl.accessToken = 'pk.eyJ1Ijoic2pvbm8iLCJhIjoiY2ltdHZ4MGh3MDIzOHVya2s5NWFybXZ6NyJ9.nwFfMI6LXGkltjHKwEteuQ'; // replace this with your access token
-    var map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/sjono/cj3rj69o7000a2rqfm9l5o0x1', // replace this with your style
+</head>
+<body>
+
+<header>
+  <center> <h1>Viewpoint Bridge Sensor</h1></center>
+  <h3>A smart sensor for bridges</h3>
+<!--
+	<ul>
+      <li><a href="#about" class="internal">What is It?</a></li>
+		<li><a href="#demo" class="internal">Demo</a></li>    
+    </ul>
+-->
+  </header>
+	<div id='map' style="width: 100%; height: 600px"></div>
+
+<script>
+mapboxgl.accessToken = 'pk.eyJ1Ijoic2pvbm8iLCJhIjoiY2ltdHZ4MGh3MDIzOHVya2s5NWFybXZ6NyJ9.nwFfMI6LXGkltjHKwEteuQ';
+
+var map = new mapboxgl.Map({
+    container: 'map', // container id
+	style: 'mapbox://styles/sjono/cj3rj69o7000a2rqfm9l5o0x1', // replace this with your style
 	center:[-75.132069, 39.973518],
-		zoom: 11.32
-    });
-	//Adding stuff for ON CLICK!~~~~~~~~~~~~~~~~
+	zoom: 11.32
+});
+
+map.addControl(new mapboxgl.FullscreenControl());
+
+	
+//Adding stuff for ON CLICK!~~~~~~~~~~~~~~~~
 	map.on('click', function(e) {
   var features = map.queryRenderedFeatures(e.point, {
     layers: ['viewport01'] // replace this with the name of the layer
@@ -47,12 +111,13 @@
 
 	  var popup = new mapboxgl.Popup({ offset: [0, -15] })
 		.setLngLat(feature.geometry.coordinates)
-		.setHTML('<h3>' + feature.properties.TITLE + '</h3><p><a href="http://jonosanders.com/mural_map.html">Click for more info</a>')
+		.setHTML('<h3>' + feature.properties.TITLE + '</h3><p><a href="https://github.com/ViewpointBridge/Viewpoint/raw/gh-pages/clearblade_screen.png">Click for more info</a>')
 		.setLngLat(feature.geometry.coordinates)
 		.addTo(map);
 	});
 		  
 	// END STUFF FOR ON CLICK!!!!!!! 
-    </script>
-  </body>
+</script>
+
+</body>
 </html>
