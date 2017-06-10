@@ -1,0 +1,58 @@
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <title>Points on a map</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.js'> 
+	  </script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.31.0/mapbox-gl.css' rel='stylesheet' />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      #map {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script>
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2pvbm8iLCJhIjoiY2ltdHZ4MGh3MDIzOHVya2s5NWFybXZ6NyJ9.nwFfMI6LXGkltjHKwEteuQ'; // replace this with your access token
+    var map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/sjono/cj3rj69o7000a2rqfm9l5o0x1', // replace this with your style
+	center:[-75.132069, 39.973518],
+		zoom: 11.32
+    });
+	//Adding stuff for ON CLICK!~~~~~~~~~~~~~~~~
+	map.on('click', function(e) {
+  var features = map.queryRenderedFeatures(e.point, {
+    layers: ['viewport01'] // replace this with the name of the layer
+	  });
+
+	  if (!features.length) {
+		return;
+	  }
+
+	  var feature = features[0];
+
+	  var popup = new mapboxgl.Popup({ offset: [0, -15] })
+		.setLngLat(feature.geometry.coordinates)
+		.setHTML('<h3>' + feature.properties.TITLE + '</h3><p><a href="http://jonosanders.com/mural_map.html">Click for more info</a>')
+		.setLngLat(feature.geometry.coordinates)
+		.addTo(map);
+	});
+		  
+	// END STUFF FOR ON CLICK!!!!!!! 
+    </script>
+  </body>
+</html>
