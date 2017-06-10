@@ -18,4 +18,5 @@ An INTUITIVE INTERFACE eliminates the need for data analysis by a third party
 VIEWPOINT’s AGGREGATED DATA helps compile a comprehensive picture of infrastructural health
 
 ### IMAGES and GIFs
+![](Viewpoint/viewpoint_tech.png)
 ![](Viewpoint/viewpoint_features.png)
