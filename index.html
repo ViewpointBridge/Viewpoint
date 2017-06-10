@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset='utf-8' />
-    <title>Viewport Bridge Sensor</title>
+    <title></title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.38.0/mapbox-gl.css' rel='stylesheet' />
@@ -13,6 +13,7 @@
     header {
       font-family: Oswald;
 	text-align: center;
+      background: url("https://farm9.staticflickr.com/8591/16691385011_22f6812e56_z_d.jpg");
       background-size: cover;
       color: white;
     }
@@ -111,7 +112,7 @@ map.addControl(new mapboxgl.FullscreenControl());
 
 	  var popup = new mapboxgl.Popup({ offset: [0, -15] })
 		.setLngLat(feature.geometry.coordinates)
-		.setHTML('<h3>' + feature.properties.TITLE + '</h3><p><a href="https://github.com/ViewpointBridge/Viewpoint/raw/gh-pages/clearblade_screen.png">Click for more info</a>')
+		.setHTML('<h3>' + feature.properties.TITLE + '</h3><p><a href="https://machineq.clearblade.com/dashboard/?systemKey=U2FsdGVkX1/ZtXEl1+qq1Kou9E7eP4hrpo1EJMQaNQtEWJG7sUtrHrWfbbyu/YGl&systemSecret=U2FsdGVkX1+MZUkgWOCUwhjT9YIlbrPbm9wm/jayNduS1Ps34jbomLVanc4/pkVJ&name=MachineQ%20Devices%20Portal">Click for more info</a>')
 		.setLngLat(feature.geometry.coordinates)
 		.addTo(map);
 	});
