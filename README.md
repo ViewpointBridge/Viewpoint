@@ -1,4 +1,5 @@
 # Viewpoint Bridge Sensor
+![](viewpoint_title.png)
   
 Viewpoint simplifies structural health monitoring and helping bridge owners detect issues earlier and with more reliability.  
 
@@ -7,7 +8,7 @@ Viewpoint simplifies structural health monitoring and helping bridge owners dete
 **Demo**: (http://viewpointbridge.github.io/Viewpoint/)
 
 ### DESCRIPTION
-
+![](viewpoint_features.png)
 
 Viewpoint simplifies structural health monitoring and helping bridge owners detect issues earlier and with more reliability.  
 REAL-TIME DATA allows bridge owners to track and comprehend changes in bridge health 
@@ -16,5 +17,5 @@ An INTUITIVE INTERFACE eliminates the need for data analysis by a third party
 VIEWPOINT’s AGGREGATED DATA helps compile a comprehensive picture of infrastructural health
 
 ### IMAGES
-![](Viewpoint/viewpoint_tech.png)
-![](Viewpoint/viewpoint_features.png)
+![](viewpoint_tech.png)
+
