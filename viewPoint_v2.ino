@@ -230,17 +230,8 @@ void loop() {
     send_LoRa_data(set_port, payload);
     
     lpp.reset(); 
-
-    sensorValue = analogRead(sensorPin)/1000;
-//    sensorValue = map(sensorValue,0,1000,0,100);
-    Serial.print("Moisture: ");
-    Serial.println(sensorValue);
-    delay(1000);
-
-    lpp.addDigitalInput(3,accel); 
-    lpp.addAnalogInput(4,sensorValue);
-
-  
+    buff = *lpp.getBuffer();
+    
     Serial.print("Buffer size:" );
     Serial.println(lpp.getSize());
 
@@ -253,6 +244,18 @@ void loop() {
 
     Serial.print("Buffer content:" );
     Serial.println(payload);
+    
+    sensorValue = analogRead(sensorPin)/1000;
+//    sensorValue = map(sensorValue,0,1000,0,100);
+    Serial.print("Moisture: ");
+    Serial.println(sensorValue);
+    delay(1000);
+
+    lpp.addDigitalInput(3,accel); 
+    lpp.addAnalogInput(4,sensorValue);
+
+  
+
 
     send_LoRa_data(set_port, payload);
 
